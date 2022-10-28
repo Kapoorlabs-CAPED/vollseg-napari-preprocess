@@ -1,0 +1,48 @@
+name: vollseg-napari-preprocess
+display_name: VollSeg Napari Preprocessing Plugin
+contributions:
+  commands:
+    - id: vollseg-napari-preprocess.get_reader
+      python_name: vollseg_napari_preprocess._reader:napari_get_reader
+      title: Open data with VollSeg Napari Preprocessing Plugin
+    - id: vollseg-napari-preprocess.write_multiple
+      python_name: vollseg_napari_preprocess._writer:write_multiple
+      title: Save multi-layer data with VollSeg Napari Preprocessing Plugin
+    - id: vollseg-napari-preprocess.write_single_image
+      python_name: vollseg_napari_preprocess._writer:write_single_image
+      title: Save image data with VollSeg Napari Preprocessing Plugin
+    - id: vollseg-napari-preprocess.make_sample_data
+      python_name: vollseg_napari_preprocess._sample_data:make_sample_data
+      title: Load sample data from VollSeg Napari Preprocessing Plugin
+    - id: vollseg-napari-preprocess.make_qwidget
+      python_name: vollseg_napari_preprocess._widget:ExampleQWidget
+      title: Make example QWidget
+    - id: vollseg-napari-preprocess.make_magic_widget
+      python_name: vollseg_napari_preprocess._widget:example_magic_widget
+      title: Make example magic widget
+    - id: vollseg-napari-preprocess.make_func_widget
+      python_name: vollseg_napari_preprocess._widget:example_function_widget
+      title: Make example function widget
+  readers:
+    - command: vollseg-napari-preprocess.get_reader
+      accepts_directories: false
+      filename_patterns: ['*.npy']
+  writers:
+    - command: vollseg-napari-preprocess.write_multiple
+      layer_types: ['image*','labels*']
+      filename_extensions: []
+    - command: vollseg-napari-preprocess.write_single_image
+      layer_types: ['image']
+      filename_extensions: ['.npy']
+  sample_data:
+    - command: vollseg-napari-preprocess.make_sample_data
+      display_name: VollSeg Napari Preprocessing Plugin
+      key: unique_id.1
+  widgets:
+    - command: vollseg-napari-preprocess.make_qwidget
+      display_name: Example QWidget
+    - command: vollseg-napari-preprocess.make_magic_widget
+      display_name: Example Magic Widget
+    - command: vollseg-napari-preprocess.make_func_widget
+      autogenerate: true
+      display_name: Example Function Widget
